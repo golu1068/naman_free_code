@@ -136,6 +136,23 @@ class main():
         Temperature = pde1D_convect(nx,hx,nt,ht,init_T,T_inf, K,h)
         
         Moisture = pde1D_convect_M(nx,hx,nt,ht,init_M,Pwv_inf,Deff,hm);
+        
+        ##########################################################################
+        x = np.linspace(0,L,nx+1);
+        
+        Moisture = np.array(Moisture)
+
+        fig1 = plt.figure(1)
+        plt.plot(x, Moisture[0])
+        plt.plot(x, Moisture[2])
+        plt.plot(x, Moisture[4])
+        plt.plot(x, Moisture[6])
+        plt.plot(x, Moisture[8])
+        plt.plot(x, Moisture[10])
+        plt.legend(['t= 0 h', 't= 2 h' , 't=4 h', 't=6 h', 't=8 h', 't=10 h'])
+        plt.xlabel('x (m)')
+        plt.ylabel('Moisture (kg moisture/kg solid)')
+        plt.xlim(0,0.02)
 
 if __name__ == "__main__":
     main()
